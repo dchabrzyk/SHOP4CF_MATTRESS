@@ -26,9 +26,7 @@ Values required for replacement are wrapped in ``<>`` braces.
 
 ## Deployment to Kubernetes
 To run application stack you will need **kubernetes cluster**.
+Script requires the namespace name. For example: ``run-stack.sh my-namespace``.
+
 To deploy application stack to kubernetes execute the ``k8s/run-stack.ps1`` or ``k8s/run-stack.sh`` scripts. 
 Take a look inside to know what it does.
-
-#### _Note_
-
-Script requires the namespace name. For example: ``run-stack.sh my-namespace``.
