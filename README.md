@@ -25,8 +25,9 @@ Adapt required values in ``k8s/keycloak.yml`` and ``k8s/mamma-api.yml`` files.
 Values required for replacement are wrapped in ``<>`` braces.
 
 ## Deployment to Kubernetes
-To run application stack you will need **kubernetes cluster**.
-Script requires the namespace name. For example: ``run-stack.sh my-namespace``.
+To run application stack you will need **kubernetes cluster**. If you do not have production grade cluster you can use one of popular one-click micro kubernetes clusters like minicube, k3s or microk8s.
+Application stack requires also predefined namespace in kubernetes cluster with configured access to **docker.ramp.eu** repository.
 
-To deploy application stack to kubernetes execute the ``k8s/run-stack.ps1`` or ``k8s/run-stack.sh`` scripts. 
-Take a look inside to know what it does.
+
+To deploy application stack to kubernetes execute the ``k8s/run-stack.ps1`` or ``k8s/run-stack.sh`` scripts (take a look inside the script to know what it does).
+Script requires the namespace name. For example: ``run-stack.sh my-namespace``.
