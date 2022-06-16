@@ -1,0 +1,105 @@
+﻿apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mamma-api-config
+data:
+  CLIENT_API_BASE_URL: "https://<api_base_url>"
+  CLIENT_AUTH_URL: "https://<keycloak_frontend_url>/auth/"
+  FIWARE_WEBHOOK_CALLBACK_URL: "http://mamma-api-service:7000"
+  ConnectionStrings__DefaultConnection: "Host=<db_host>;Database=<db_name>;User ID=<db_user>;Password=<db_pass>"
+  ConnectionStrings__AdminConnection: "Host=<db_host>;Database=<db_name>;User ID=<db_admin_user>;Password=<db_admin_pass>"
+  Auth__Domain: "https://<keycloak_frontend_url>"
+  Auth__Server__ClientSecret: "<generated_auth_client_secret>"
+  Auth__Server__MasterRealm: master
+  Auth__Server__ClientId: mamma-server
+  Auth__Client__RedirectUris__0: "https://<client_url>/*"
+  Auth__Client__RedirectUris__1: "https://<client_url>:443/*"
+  Auth__Client__LogoUrl: "https://<client_url>/logo.png"
+  Auth__Client__BaseUrl: "https://<client_url>/logo.png"
+  Auth__Client__ClientId: mamma-client
+  Auth__Device__RedirectUris__0: "https://<terminal_url>/*"
+  Auth__Device__RedirectUris__1: "https://<terminal_url>:443/*"
+  Auth__Smtp__StartTls: true
+  Auth__Smtp__Auth: false
+  Auth__Smtp__Ssl: false
+  Auth__Smtp__Port: "<smtp_port>"
+  Auth__Smtp__Host: "<smtp__url>"
+  Auth__Smtp__From: "<from_email>"
+  Auth__Smtp__FromDisplayName: "Mamma"
+  Alerting__Smtp__StartTls: true
+  Alerting__Smtp__Auth: false
+  Alerting__Smtp__Ssl: false
+  Alerting__Smtp__Port: "<smtp_port>"
+  Alerting__Smtp__Host: "<smtp__url>"
+  Alerting__Smtp__From: "<from_email>"
+  Alerting__Smtp__FromDisplayName: "Mamma"
+  camundaRestApiUri: "http://camunda-service:8200/engine-rest"
+  FiwareUrl: "http://fiware-service:8100"
+  MassTransit__Kafka__ConsumerGroup: cdems-consumer-group
+  MassTransit--Kafka--Host: kafka-service:9092
+  MassTransit--rabbitmq--host: rabbitmq-service
+  MassTransit--rabbitmq--port: 8300
+  ASPNETCORE_URLS: "http://+"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mamma-api-deployment
+  labels:
+    app: mamma-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mamma-api
+  template:
+    metadata:
+      labels:
+        app: mamma-api
+    spec:
+      containers:
+        - name: mamma-api
+          image: docker.ramp.eu/shop4cf/mamma-server:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              name: web-http
+          envFrom:
+            - configMapRef:
+                name: mamma-api-config
+          env:
+            - name: Auth__Server__AdminUsername
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-secret
+                  key: KEYCLOAK_USER
+            - name: Auth__Server__AdminSecret
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-secret
+                  key: KEYCLOAK_PASSWORD
+            - name: MassTransit__rabbitmq__username
+              valueFrom:
+                secretKeyRef:
+                  name: mamma-secret
+                  key: rabbitmq-user
+            - name: MassTransit__rabbitmq__password
+              valueFrom:
+                secretKeyRef:
+                  name: mamma-secret
+                  key: rabbitmq-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mamma-api-service
+spec:
+  type: NodePort
+  selector:
+    app: mamma-api
+  ports:
+    - name: web-http
+      protocol: TCP
+      port: 7000
+      targetPort: web-http
+      nodePort: 30160

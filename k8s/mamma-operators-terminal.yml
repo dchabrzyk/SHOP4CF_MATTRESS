@@ -1,0 +1,49 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mamma-terminal-deployment
+  labels:
+    app: mamma-terminal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mamma-terminal
+  template:
+    metadata:
+      labels:
+        app: mamma-terminal
+    spec:
+      containers:
+        - name: mamma-terminal
+          image: docker.ramp.eu/mattress-pvt/mamma-operators-terminal:0.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              name: web-http
+          env:
+            - name: API_BASE_URL
+              valueFrom:
+                configKeyRef:
+                  name: mamma-api-config
+                  key: CLIENT_API_BASE_URL
+            - name: APP_AUTH_DOMAIN
+              valueFrom:
+                configKeyRef:
+                  name: mamma-api-config
+                  key: CLIENT_AUTH_URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mamma-terminal-service
+spec:
+  type: NodePort
+  selector:
+    app: mamma-terminal
+  ports:
+    - name: web-http
+      protocol: TCP
+      port: 7002
+      targetPort: web-http
+      nodePort: 30171

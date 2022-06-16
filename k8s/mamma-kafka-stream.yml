@@ -1,0 +1,23 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mamma-kafka-stream-deployment
+  labels:
+    app: mamma-kafka-stream
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mamma-kafka-stream
+  template:
+    metadata:
+      labels:
+        app: mamma-kafka-stream
+    spec:
+      containers:
+        - name: mamma-kafka-stream
+          image: docker.ramp.eu/mattress-pvt/mamma-kafka-stream:0.0.1
+          imagePullPolicy: Always
+          env:
+            - name: KAFKA_ADDRESS
+              value: "kafka-service:9092"

@@ -1,0 +1,54 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mamma-client-deployment
+  labels:
+    app: mamma-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mamma-client
+  template:
+    metadata:
+      labels:
+        app: mamma-client
+    spec:
+      containers:
+        - name: mamma-client
+          image: docker.ramp.eu/mattress-pvt/mamma-client:0.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              name: web-http
+          env:
+            - name: API_BASE_URL
+              valueFrom:
+                configKeyRef:
+                  name: mamma-api-config
+                  key: CLIENT_API_BASE_URL
+            - name: AUTH_URL
+              valueFrom:
+                configKeyRef:
+                  name: mamma-api-config
+                  key: CLIENT_AUTH_URL
+            - name: AUTH_CLIENT_ID
+              valueFrom:
+                configKeyRef:
+                  name: mamma-api-config
+                  key: Auth__Client__ClientId
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mamma-client-service
+spec:
+  type: NodePort
+  selector:
+    app: mamma-client
+  ports:
+    - name: web-http
+      protocol: TCP
+      port: 7001
+      targetPort: web-http
+      nodePort: 30170

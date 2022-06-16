@@ -1,0 +1,50 @@
+﻿apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fiware-config
+data:
+  fiware-port: "8100"
+  fiware-url: fiware-service
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fiware-deployment
+  labels:
+    app: fiware
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fiware
+  template:
+    metadata:
+      labels:
+        app: fiware
+    spec:
+      containers:
+        - name: fiware
+          image: fiware/orion-ld
+          args: [ "-dbhost", "$(MONGO_DB_URL)", "-logLevel", "DEBUG" ]
+          ports:
+            - containerPort: 1026
+          env:
+            - name: MONGO_DB_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-db-config
+                  key: mongo-db-url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fiware-service
+spec:
+  type: NodePort
+  selector:
+    app: fiware
+  ports:
+    - protocol: TCP
+      port: 8100
+      targetPort: 1026
+      nodePort: 30120
