@@ -24,12 +24,12 @@ spec:
           env:
             - name: API_BASE_URL
               valueFrom:
-                configKeyRef:
+                configMapKeyRef:
                   name: mamma-api-config
                   key: CLIENT_API_BASE_URL
             - name: APP_AUTH_DOMAIN
               valueFrom:
-                configKeyRef:
+                configMapKeyRef:
                   name: mamma-api-config
                   key: CLIENT_AUTH_URL
 ---
