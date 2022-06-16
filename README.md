@@ -19,7 +19,7 @@ Execute ``Database/initialize.sh -a HOST -p PORT -d DATABASE_NAME -w PGADMIN_PAS
 
 Default ``user/password`` is ``mamma_user/mamma_pass``.
 
-## Configuration
+## Runtime environment configuration
 
 Replace required values in ``k8s/keycloak.yml`` and ``k8s/mamma-api.yml`` files. Values required for replacement are wrapped in ``<>`` braces.
 
