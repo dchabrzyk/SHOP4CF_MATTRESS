@@ -1,0 +1,4713 @@
+﻿[
+    {
+        "elementType": "setting",
+        "action": "create",
+        "key": "planning.general.directiveresourcetype",
+        "profile": "Default",
+        "context": 200,
+        "value": 5
+    },
+    {
+        "elementType": "setting",
+        "action": "create",
+        "key": "factory.health.muscoskeletalmaxweightlimit",
+        "profile": "Default",
+        "context": 200,
+        "value": 30
+    },
+    {
+        "elementType": "setting",
+        "action": "create",
+        "context": 200,
+        "key": "model.schema.json",
+        "profile": "PipeDescription",
+        "value": {
+            "value": {
+                "$id": "https://example.com/pipeDescription.schema.json",
+                "title": "PipeDescription",
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "length": {
+                        "type": "object",
+                        "properties": {
+                            "min": {
+                                "type": "integer"
+                            },
+                            "max": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "min",
+                            "max"
+                        ]
+                    },
+                    "material": {
+                        "type": "string"
+                    },
+                    "diameter": {
+                        "type": "object",
+                        "properties": {
+                            "min": {
+                                "type": "integer"
+                            },
+                            "max": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "min",
+                            "max"
+                        ]
+                    },
+                    "weight": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "name",
+                    "length",
+                    "material",
+                    "diameter",
+                    "weight"
+                ]
+            }
+        }
+    },
+    {
+        "elementType": "setting",
+        "action": "create",
+        "context": 200,
+        "key": "model.schema.version",
+        "profile": "PipeDescription",
+        "value": "1"
+    },
+    {
+        "elementType": "setting",
+        "action": "create",
+        "context": 200,
+        "key": "model.schema.json",
+        "profile": "PipeMatcher",
+        "value": {
+            "value": {
+                "$id": "https://example.com/pipeMatcher.schema.json",
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "title": "PipeMatcher",
+                "type": "object",
+                "properties": {
+                    "requirements": {
+                        "type": "array",
+                        "items": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "matcher": {
+                                        "type": "object",
+                                        "properties": {
+                                            "requirements": {
+                                                "type": "array",
+                                                "items": [
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            },
+                                                            "jsonPath": {
+                                                                "const": "$.material"
+                                                            },
+                                                            "schemaKey": {
+                                                                "const": "JsonPropertyRequirementEqualsString"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "value",
+                                                            "jsonPath",
+                                                            "schemaKey"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "integer"
+                                                            },
+                                                            "jsonPath": {
+                                                                "const": "$.diameter"
+                                                            },
+                                                            "schemaKey": {
+                                                                "const": "JsonPropertyRequirementEqualsNumber"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "value",
+                                                            "jsonPath",
+                                                            "schemaKey"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "min": {
+                                                                "type": "integer"
+                                                            },
+                                                            "max": {
+                                                                "type": "integer"
+                                                            },
+                                                            "jsonPath": {
+                                                                "const": "$.length"
+                                                            },
+                                                            "schemaKey": {
+                                                                "const": "JsonPropertyRequirementMinMaxNumber"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "min",
+                                                            "max",
+                                                            "jsonPath",
+                                                            "schemaKey"
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "required": [
+                                            "requirements"
+                                        ]
+                                    },
+                                    "schemaKey": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "matcher",
+                                    "schemaKey"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "requirements"
+                ]
+            }
+        }
+    },
+    {
+        "elementType": "setting",
+        "action": "create",
+        "context": 200,
+        "key": "alerting.rule",
+        "profile": "Default",
+        "value": {
+            "alertType": 1,
+            "identifier": "alerting.rule.expressionRule.SendDelayedOrdersGroupedByCustomersReportCommand",
+            "parameters": {
+                "expressionAlertParameters": {
+                    "command": "{\"parameters\": {\"reportName\": \"Delayed orders grouped by customers\",\"bufferDelay\": 1440,\"onlyRootTasks\": true}}",
+                    "commandTypeNamespace": "CDEMS.Application.Alerts.Rules.SendDelayedOrdersGroupedByCustomersReportCommand.SendDelayedOrdersGroupedByCustomersReportCommand"
+                }
+            },
+            "description": "Alerting test expression",
+            "retryOptions": {
+                "logEvents": true,
+                "retryAttempts": 0,
+                "exceededAction": 0,
+                "delaysInSeconds": null
+            },
+            "cronExpression": null
+        }
+    },
+    {
+        "elementType": "setting",
+        "action": "create",
+        "context": 200,
+        "key": "model.schema.version",
+        "profile": "PipeMatcher",
+        "value": "1"
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "AssetCapabilities",
+        "version": "1",
+        "externalId": "bendingAssetCapabilities",
+        "value": {
+            "name": "Bending v1",
+            "elements": [
+                {
+                    "elementType": "range",
+                    "schemaKey": "RangeAssetCapabilitiesElement",
+                    "name": "bendAngle",
+                    "min": 0,
+                    "max": 145,
+                    "unit": "deg",
+                    "valueType": "int"
+                },
+                {
+                    "elementType": "range",
+                    "schemaKey": "RangeAssetCapabilitiesElement",
+                    "name": "bendDirection",
+                    "min": 0,
+                    "max": 359,
+                    "unit": "deg",
+                    "valueType": "int"
+                },
+                {
+                    "elementType": "range",
+                    "schemaKey": "RangeAssetCapabilitiesElement",
+                    "name": "bendLength",
+                    "min": 10,
+                    "max": 5000,
+                    "unit": "mm",
+                    "valueType": "int"
+                },
+                {
+                    "elementType": "range",
+                    "schemaKey": "RangeAssetCapabilitiesElement",
+                    "name": "bendRadius",
+                    "min": 90,
+                    "max": 110,
+                    "unit": "mm",
+                    "valueType": "int"
+                },
+                {
+                    "elementType": "collection",
+                    "schemaKey": "CollectionAssetCapabilitiesElement",
+                    "name": "supportedMaterials",
+                    "unit": "",
+                    "valueType": "string",
+                    "items": [
+                        "AL7076",
+                        "AL6061",
+                        "0H18N9",
+                        "Default",
+                        "Generic aluminium"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "AssetCapabilities",
+        "version": "1",
+        "externalId": "cuttingAssetCapabilities",
+        "value": {
+            "name": "Cutting v1",
+            "elements": [
+                {
+                    "elementType": "range",
+                    "schemaKey": "RangeAssetCapabilitiesElement",
+                    "name": "cutAngle",
+                    "min": 0,
+                    "max": 145,
+                    "unit": "deg",
+                    "valueType": "int"
+                },
+                {
+                    "elementType": "range",
+                    "schemaKey": "RangeAssetCapabilitiesElement",
+                    "name": "cutLength",
+                    "min": 10,
+                    "max": 6000,
+                    "unit": "mm",
+                    "valueType": "int"
+                },
+                {
+                    "elementType": "collection",
+                    "schemaKey": "CollectionAssetCapabilitiesElement",
+                    "name": "supportedMaterials",
+                    "unit": "",
+                    "valueType": "string",
+                    "items": [
+                        "AL7076",
+                        "AL6061",
+                        "0H18N9",
+                        "Default",
+                        "Generic aluminium"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "PipeDescription",
+        "version": "1",
+        "externalId": "0H18N9_3001_5000_fi50",
+        "value": {
+            "name": "0H18N9_3001_5000_fi50",
+            "length": {
+                "min": 3001,
+                "max": 5000
+            },
+            "material": "steel",
+            "diameter": {
+                "min": 50,
+                "max": 50
+            },
+            "weight": 2
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "PipeDescription",
+        "version": "1",
+        "externalId": "0H18N9_1001_3000_fi50",
+        "value": {
+            "name": "0H18N9_1001_3000_fi50",
+            "length": {
+                "min": 1001,
+                "max": 3000
+            },
+            "material": "steel",
+            "diameter": {
+                "min": 50,
+                "max": 50
+            },
+            "weight": 2.5
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "PipeDescription",
+        "version": "1",
+        "externalId": "AL7076_1_1000_fi50",
+        "value": {
+            "name": "AL7076_1_1000_fi50",
+            "length": {
+                "max": 1000,
+                "min": 1
+            },
+            "material": "aluminium",
+            "diameter": {
+                "min": 50,
+                "max": 50
+            },
+            "weight": 1
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "PipeDescription",
+        "version": "1",
+        "externalId": "AL7076_1001_10000_fi50",
+        "value": {
+            "name": "AL7076_1001_10000_fi50",
+            "length": {
+                "max": 10000,
+                "min": 1001
+            },
+            "material": "aluminium",
+            "diameter": {
+                "min": 50,
+                "max": 50
+            },
+            "weight": 2
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "PipeDescription",
+        "version": "1",
+        "externalId": "PVC_Termo_1_10000_fi100",
+        "value": {
+            "name": "PVC_Termo_1_10000_fi100",
+            "length": {
+                "max": 10000,
+                "min": 1
+            },
+            "material": "pvc",
+            "diameter": {
+                "min": 100,
+                "max": 100
+            },
+            "weight": 0.75
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "PipeMatcher",
+        "version": "1",
+        "externalId": "0H18N9_3001_5000_fi50Matcher",
+        "value": {
+            "requirements": [
+                {
+                    "matcher": {
+                        "requirements": [
+                            {
+                                "value": "steel",
+                                "jsonPath": "$.material",
+                                "schemaKey": "JsonPropertyRequirementEqualsString"
+                            },
+                            {
+                                "value": 50,
+                                "jsonPath": "$.diameter",
+                                "schemaKey": "JsonPropertyRequirementEqualsNumber"
+                            },
+                            {
+                                "min": 3001,
+                                "max": 5000,
+                                "jsonPath": "$.length",
+                                "schemaKey": "JsonPropertyRequirementMinMaxNumber"
+                            }
+                        ]
+                    },
+                    "schemaKey": "ModelInstanceDocumentRequirement"
+                }
+            ]
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "PipeMatcher",
+        "version": "1",
+        "externalId": "0H18N9_1001_3000_fi50Matcher",
+        "value": {
+            "requirements": [
+                {
+                    "matcher": {
+                        "requirements": [
+                            {
+                                "value": "steel",
+                                "jsonPath": "$.material",
+                                "schemaKey": "JsonPropertyRequirementEqualsString"
+                            },
+                            {
+                                "value": 50,
+                                "jsonPath": "$.diameter",
+                                "schemaKey": "JsonPropertyRequirementEqualsNumber"
+                            },
+                            {
+                                "min": 1001,
+                                "max": 3000,
+                                "jsonPath": "$.length",
+                                "schemaKey": "JsonPropertyRequirementMinMaxNumber"
+                            }
+                        ]
+                    },
+                    "schemaKey": "ModelInstanceDocumentRequirement"
+                }
+            ]
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "PipeMatcher",
+        "version": "1",
+        "externalId": "AL7076_1_1000_fi50Matcher",
+        "value": {
+            "requirements": [
+                {
+                    "matcher": {
+                        "requirements": [
+                            {
+                                "value": "aluminium",
+                                "jsonPath": "$.material",
+                                "schemaKey": "JsonPropertyRequirementEqualsString"
+                            },
+                            {
+                                "value": 50,
+                                "jsonPath": "$.diameter",
+                                "schemaKey": "JsonPropertyRequirementEqualsNumber"
+                            },
+                            {
+                                "min": 1,
+                                "max": 1000,
+                                "jsonPath": "$.length",
+                                "schemaKey": "JsonPropertyRequirementMinMaxNumber"
+                            }
+                        ]
+                    },
+                    "schemaKey": "ModelInstanceDocumentRequirement"
+                }
+            ]
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "PipeMatcher",
+        "version": "1",
+        "externalId": "AL7076_1001_10000_fi50Matcher",
+        "value": {
+            "requirements": [
+                {
+                    "matcher": {
+                        "requirements": [
+                            {
+                                "value": "aluminium",
+                                "jsonPath": "$.material",
+                                "schemaKey": "JsonPropertyRequirementEqualsString"
+                            },
+                            {
+                                "value": 50,
+                                "jsonPath": "$.diameter",
+                                "schemaKey": "JsonPropertyRequirementEqualsNumber"
+                            },
+                            {
+                                "min": 1,
+                                "max": 10000,
+                                "jsonPath": "$.length",
+                                "schemaKey": "JsonPropertyRequirementMinMaxNumber"
+                            }
+                        ]
+                    },
+                    "schemaKey": "ModelInstanceDocumentRequirement"
+                }
+            ]
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "PipeMatcher",
+        "version": "1",
+        "externalId": "PVC_Termo_1_10000_fi100Matcher",
+        "value": {
+            "requirements": [
+                {
+                    "matcher": {
+                        "requirements": [
+                            {
+                                "value": "pvc",
+                                "jsonPath": "$.material",
+                                "schemaKey": "JsonPropertyRequirementEqualsString"
+                            },
+                            {
+                                "value": 100,
+                                "jsonPath": "$.diameter",
+                                "schemaKey": "JsonPropertyRequirementEqualsNumber"
+                            },
+                            {
+                                "min": 1,
+                                "max": 10000,
+                                "jsonPath": "$.length",
+                                "schemaKey": "JsonPropertyRequirementMinMaxNumber"
+                            }
+                        ]
+                    },
+                    "schemaKey": "ModelInstanceDocumentRequirement"
+                }
+            ]
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "Quality capabilities - bending",
+        "version": "1",
+        "externalId": "Quality capabilities - bending v1",
+        "value": {
+            "bend": {
+                "angleTolerance": {
+                    "min": 0,
+                    "max": 45
+                },
+                "distanceTolerance": {
+                    "min": 1,
+                    "max": 10
+                },
+                "radiusTolerance": {
+                    "min": 1,
+                    "max": 5
+                },
+                "quality": {
+                    "wrinkling": 1,
+                    "shearing": 2,
+                    "tearing": false,
+                    "flattening": 2
+                }
+            }
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "Quality capabilities - bending",
+        "version": "1",
+        "externalId": "Quality capabilities - bending v2",
+        "value": {
+            "bend": {
+                "angleTolerance": {
+                    "min": 0,
+                    "max": 30
+                },
+                "distanceTolerance": {
+                    "min": 1,
+                    "max": 5
+                },
+                "radiusTolerance": {
+                    "min": 1,
+                    "max": 5
+                },
+                "quality": {
+                    "wrinkling": 1,
+                    "shearing": 2,
+                    "tearing": false,
+                    "flattening": 2
+                }
+            }
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "Quality capabilities - cutting",
+        "version": "1",
+        "externalId": "Quality capabilities - cutting v1",
+        "value": {
+            "material": {
+                "lengthTolerance": {
+                    "min": 1,
+                    "max": 10
+                }
+            },
+            "cutting": {
+                "angleTolerance": {
+                    "min": 0,
+                    "max": 45
+                }
+            }
+        }
+    },
+    {
+        "elementType": "modelInstance",
+        "action": "create",
+        "schema": "Quality capabilities - cutting v2",
+        "version": "1",
+        "externalId": "Saw 2",
+        "value": {
+            "material": {
+                "lengthTolerance": {
+                    "min": 1,
+                    "max": 20
+                }
+            },
+            "cutting": {
+                "angleTolerance": {
+                    "min": 0,
+                    "max": 60
+                }
+            }
+        }
+    },
+    {
+        "elementType": "organization",
+        "action": "create",
+        "name": "MASTA",
+        "externalId": "MASTA",
+        "types": [
+            2
+        ]
+    },
+    {
+        "elementType": "organization",
+        "action": "create",
+        "name": "CMBIT",
+        "externalId": "CMBIT",
+        "types": [
+            2
+        ]
+    },
+    {
+        "elementType": "organization",
+        "action": "create",
+        "name": "POLIMAT",
+        "externalId": "POLIMAT",
+        "types": [
+            2
+        ]
+    },
+    {
+        "elementType": "organization",
+        "action": "create",
+        "name": "BIT",
+        "externalId": "BIT",
+        "types": [
+            2
+        ]
+    },
+    {
+        "elementType": "contact",
+        "action": "create",
+        "name": "Dobiesław Chabrzyk",
+        "externalId": "dchabrzyk",
+        "phone": "0048507969964",
+        "email": "d.chabrzyk@masta.solutions",
+        "description": "Customer representant",
+        "externalOrganizationId": "MASTA"
+    },
+    {
+        "elementType": "contact",
+        "action": "create",
+        "name": "Dobiesław Chabrzyk",
+        "externalId": "dchabrzyk",
+        "phone": "0048507969964",
+        "email": "d.chabrzyk@masta.solutions",
+        "description": "Customer representant",
+        "externalOrganizationId": "BIT"
+    },
+    {
+        "elementType": "contact",
+        "action": "create",
+        "name": "Anna Świtalska",
+        "externalId": "aswitalska",
+        "phone": "0048123456789",
+        "email": "a.switalska@masta.solutions",
+        "description": "Customer representant",
+        "externalOrganizationId": "BIT"
+    },
+    {
+        "elementType": "equipmentGroup",
+        "action": "create",
+        "name": "Benders",
+        "externalId": "Benders"
+    },
+    {
+        "elementType": "equipment",
+        "action": "create",
+        "name": "Bender 1",
+        "externalId": "Bender 1",
+        "externalParentId": "Benders",
+        "plannable": true,
+        "color": "#0080ff",
+        "modelInstanceExternalIds": [
+            "Quality capabilities - bending v1"
+        ]
+    },
+    {
+        "elementType": "equipment",
+        "action": "create",
+        "name": "Bender 2",
+        "externalId": "Bender 2",
+        "externalParentId": "Benders",
+        "plannable": true,
+        "color": "#0080ff",
+        "modelInstanceExternalIds": [
+            "Quality capabilities - bending v2"
+        ]
+    },
+    {
+        "elementType": "equipmentGroup",
+        "action": "create",
+        "name": "Saws",
+        "externalId": "Saws"
+    },
+    {
+        "elementType": "equipment",
+        "action": "create",
+        "name": "Saw 1",
+        "externalId": "Saw 1",
+        "externalParentId": "Saws",
+        "plannable": true,
+        "color": "#ff8000",
+        "modelInstanceExternalIds": [
+            "Quality capabilities - cutting v1"
+        ]
+    },
+    {
+        "elementType": "equipment",
+        "action": "create",
+        "name": "Saw 2",
+        "externalId": "Saw 2",
+        "externalParentId": "Saws",
+        "plannable": true,
+        "color": "#ff8000",
+        "modelInstanceExternalIds": [
+            "Quality capabilities - cutting v2"
+        ]
+    },
+    {
+        "elementType": "equipmentGroup",
+        "action": "create",
+        "name": "Assembling",
+        "externalId": "Assembling"
+    },
+    {
+        "elementType": "equipment",
+        "action": "create",
+        "name": "Assembly 1",
+        "externalId": "Assembly 1",
+        "externalParentId": "Assembling",
+        "plannable": true,
+        "color": "#00ff00"
+    },
+    {
+        "elementType": "equipment",
+        "action": "create",
+        "name": "Assembly 2",
+        "externalId": "Assembly 2",
+        "externalParentId": "Assembling",
+        "plannable": true,
+        "color": "#00ff00"
+    },
+    {
+        "elementType": "equipmentGroup",
+        "action": "create",
+        "name": "QC Workplaces",
+        "externalId": "QC Workplaces"
+    },
+    {
+        "elementType": "equipment",
+        "action": "create",
+        "name": "QC Workplace 1",
+        "externalId": "QC Workplace 1",
+        "externalParentId": "QC Workplaces",
+        "plannable": true,
+        "color": "#ffff00"
+    },
+    {
+        "elementType": "equipment",
+        "action": "create",
+        "name": "QC Workplace 2",
+        "externalId": "QC Workplace 2",
+        "externalParentId": "QC Workplaces",
+        "plannable": true,
+        "color": "#ffff00"
+    },
+    {
+        "elementType": "equipment",
+        "action": "create",
+        "name": "Transport",
+        "externalId": "Transport",
+        "plannable": true,
+        "color": "#000066"
+    },
+    {
+        "elementType": "location",
+        "action": "create",
+        "name": "Location 1.1",
+        "externalId": "Location1.1",
+        "plannable": true,
+        "color": "#00ff00"
+    },
+    {
+        "elementType": "location",
+        "action": "create",
+        "name": "Location 1.2",
+        "externalId": "Location1.2",
+        "plannable": true,
+        "color": "#00ff00"
+    },
+    {
+        "elementType": "location",
+        "action": "create",
+        "name": "Location 1.3",
+        "externalId": "Location1.3",
+        "plannable": true,
+        "color": "#00ff00"
+    },
+    {
+        "elementType": "location",
+        "action": "create",
+        "name": "Location 1.4",
+        "externalId": "Location1.4",
+        "plannable": true,
+        "color": "#00ff00"
+    },
+    {
+        "elementType": "location",
+        "action": "create",
+        "name": "Location 2.1",
+        "externalId": "Location2.1",
+        "plannable": true,
+        "color": "#ff8000"
+    },
+    {
+        "elementType": "location",
+        "action": "create",
+        "name": "Location 2.2",
+        "externalId": "Location2.2",
+        "plannable": true,
+        "color": "#ff8000"
+    },
+    {
+        "elementType": "location",
+        "action": "create",
+        "name": "Location 2.3",
+        "externalId": "Location2.3",
+        "plannable": true,
+        "color": "#ff8000"
+    },
+    {
+        "elementType": "location",
+        "action": "create",
+        "name": "Location 2.4",
+        "externalId": "Location2.4",
+        "plannable": true,
+        "color": "#ff8000"
+    },
+    {
+        "elementType": "asset",
+        "action": "create",
+        "name": "Robots",
+        "externalId": "Robots"
+    },
+    {
+        "elementType": "asset",
+        "action": "create",
+        "name": "Kuka 1",
+        "externalId": "Kuka 1",
+        "externalParentId": "Robots",
+        "plannable": true
+    },
+    {
+        "elementType": "asset",
+        "action": "create",
+        "name": "Kuka 2",
+        "externalId": "Kuka 2",
+        "externalParentId": "Robots",
+        "plannable": true
+    },
+    {
+        "elementType": "asset",
+        "action": "create",
+        "name": "Card 1",
+        "externalId": "Card1"
+    },
+    {
+        "elementType": "asset",
+        "action": "create",
+        "name": "Card 2",
+        "externalId": "Card2"
+    },
+    {
+        "elementType": "asset",
+        "action": "create",
+        "name": "Card 3",
+        "externalId": "Card3"
+    },
+    {
+        "elementType": "person",
+        "action": "create",
+        "name": "Operators",
+        "externalId": "Operators",
+        "plannable": true
+    },
+    {
+        "elementType": "calendarResource",
+        "action": "create",
+        "name": "Base FTE Calendar",
+        "externalId": "Base FTE Calendar"
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "0H18N9_3001_5000_fi50",
+        "externalId": "0H18N9_3001_5000_fi50",
+        "modelInstanceExternalIds": [
+            "0H18N9_3001_5000_fi50",
+            "0H18N9_3001_5000_fi50Matcher"
+        ],
+        "plannable": true,
+        "materialTypes": [
+            0
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "0H18N9_1001_3000_fi50",
+        "externalId": "0H18N9_1001_3000_fi50",
+        "modelInstanceExternalIds": [
+            "0H18N9_1001_3000_fi50",
+            "0H18N9_1001_3000_fi50Matcher"
+        ],
+        "plannable": true,
+        "materialTypes": [
+            0
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "AL7076_1_1000_fi50",
+        "externalId": "AL7076_1_1000_fi50",
+        "modelInstanceExternalIds": [
+            "AL7076_1_1000_fi50",
+            "AL7076_1_1000_fi50Matcher"
+        ],
+        "plannable": true,
+        "materialTypes": [
+            0
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "AL7076_1001_10000_fi50",
+        "externalId": "AL7076_1001_10000_fi50",
+        "modelInstanceExternalIds": [
+            "AL7076_1001_10000_fi50",
+            "AL7076_1001_10000_fi50Matcher"
+        ],
+        "plannable": true,
+        "materialTypes": [
+            0
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "PVC_Termo_1_10000_fi100",
+        "externalId": "PVC_Termo_1_10000_fi100",
+        "modelInstanceExternalIds": [
+            "PVC_Termo_1_10000_fi100",
+            "PVC_Termo_1_10000_fi100Matcher"
+        ],
+        "plannable": true,
+        "materialTypes": [
+            0
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Steam coil 20kW - precut",
+        "externalId": "Steam coil 20kW - precut",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Steam coil 20kW - precut QC",
+        "externalId": "Steam coil 20kW - precut QC",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Steam coil 20kW - bent",
+        "externalId": "Steam coil 20kW - bent",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Steam coil 20kW - bent QC",
+        "externalId": "Steam coil 20kW - bent QC",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Steam coil 20kW",
+        "externalId": "Steam coil 20kW",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Handlebars Triumph 1050 08 - 14 - precut",
+        "externalId": "Handlebars Triumph 1050 08 - 14 - precut",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Handlebars Triumph 1050 08 - 14 - precut QC",
+        "externalId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Handlebars Triumph 1050 08 - 14 - bent",
+        "externalId": "Handlebars Triumph 1050 08 - 14 - bent",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Handlebars Triumph 1050 08 - 14 - bent QC",
+        "externalId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Handlebars Triumph 1050 08 - 14",
+        "externalId": "Handlebars Triumph 1050 08 - 14",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Gmoles Transalp 08 - 12 - precut",
+        "externalId": "Gmoles Transalp 08 - 12 - precut",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Gmoles Transalp 08 - 12 - precut QC",
+        "externalId": "Gmoles Transalp 08 - 12 - precut QC",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Gmoles Transalp 08 - 12 - bent",
+        "externalId": "Gmoles Transalp 08 - 12 - bent",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Gmoles Transalp 08 - 12 - bent QC",
+        "externalId": "Gmoles Transalp 08 - 12 - bent QC",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "material",
+        "action": "create",
+        "name": "Gmoles Transalp 08 - 12",
+        "externalId": "Gmoles Transalp 08 - 12",
+        "plannable": true,
+        "materialTypes": [
+            0,
+            1
+        ]
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Kuka 1",
+        "quantity": 1,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Kuka 2",
+        "quantity": 1,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Bender 1",
+        "quantity": 1,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Bender 2",
+        "quantity": 1,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Saw 1",
+        "quantity": 1,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "periodStart": "2022-01-04T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Saw 2",
+        "quantity": 1,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Assembly 1",
+        "quantity": 1,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Assembly 2",
+        "quantity": 1,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "QC Workplace 1",
+        "quantity": 1,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "QC Workplace 2",
+        "quantity": 1,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Transport",
+        "quantity": 4,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Location1.1",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "capacityGroup": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Location1.2",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "capacityGroup": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Location1.3",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "capacityGroup": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Location1.4",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "capacityGroup": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Location2.1",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "capacityGroup": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Location2.2",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "capacityGroup": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Location2.3",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "capacityGroup": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Location2.4",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 0,
+        "capacityGroup": 0,
+        "periodStart": "2021-07-05T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Steam coil 20kW - precut",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Steam coil 20kW - precut QC",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Steam coil 20kW - bent",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Steam coil 20kW - bent QC",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Gmoles Transalp 08 - 12 - precut",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Gmoles Transalp 08 - 12 - precut QC",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Gmoles Transalp 08 - 12 - bent",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Gmoles Transalp 08 - 12 - bent QC",
+        "quantity": 0,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "0H18N9_3001_5000_fi50",
+        "externalContextResourceId": "Location1.1",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "0H18N9_1001_3000_fi50",
+        "externalContextResourceId": "Location1.2",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "AL7076_1_1000_fi50",
+        "externalContextResourceId": "Location1.3",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "AL7076_1001_10000_fi50",
+        "externalContextResourceId": "Location1.4",
+        "quantity": 20,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-01T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "PVC_Termo_1_10000_fi100",
+        "externalContextResourceId": "Location2.1",
+        "quantity": 30,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-02T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "resourceCapacity",
+        "action": "create",
+        "externalResourceId": "Operators",
+        "quantity": 4,
+        "quantityUnit": 0,
+        "changeType": 1,
+        "capacityGroup": 0,
+        "periodStart": "2022-01-02T00:00:00.000Z",
+        "periodEnd": "2050-07-05T00:00:00.000Z"
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/123",
+        "name": "Steam coil 20kW",
+        "dateTimeTo": "2022-07-13T00:00:00.000Z",
+        "isDateTimeFromStrict": false,
+        "isDateTimeToStrict": false,
+        "externalCustomerId": "BIT"
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/123/10",
+        "externalParentId": "Z/2021/123",
+        "name": "Cutting - Steam coil 20kW",
+        "dateTimeTo": "2022-07-13T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Setup",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Production",
+                "position": 20,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "0H18N9_3001_5000_fi50",
+                        "usageType": 1,
+                        "quantity": 5,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut",
+                        "usageType": 2,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Tear down",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/123/20",
+        "externalParentId": "Z/2021/123",
+        "name": "QC Cutting - Steam coil 20kW",
+        "dateTimeTo": "2022-07-13T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut",
+                        "usageType": 1,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut QC",
+                        "usageType": 2,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/123/30",
+        "externalParentId": "Z/2021/123",
+        "name": "Bending - Steam coil 20kW",
+        "dateTimeTo": "2022-07-13T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Benders",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut QC",
+                        "usageType": 1,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent",
+                        "usageType": 2,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/123/40",
+        "externalParentId": "Z/2021/123",
+        "name": "QC Bending - Steam coil 20kW",
+        "dateTimeTo": "2022-07-13T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent",
+                        "usageType": 1,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent QC",
+                        "usageType": 2,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/123/50",
+        "externalParentId": "Z/2021/123",
+        "name": "Transport - Steam coil 20kW",
+        "dateTimeTo": "2022-07-13T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent QC",
+                        "usageType": 0,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/123/60",
+        "externalParentId": "Z/2021/123",
+        "name": "Assembly - Steam coil 20kW",
+        "dateTimeTo": "2022-07-13T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Assembling",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent QC",
+                        "usageType": 1,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW",
+                        "usageType": 2,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/124",
+        "name": "Steam coil 20kW",
+        "dateTimeTo": "2022-07-06T00:00:00.000Z",
+        "isDateTimeFromStrict": false,
+        "isDateTimeToStrict": false,
+        "externalCustomerId": "BIT"
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/124/10",
+        "externalParentId": "Z/2021/124",
+        "name": "Cutting - Steam coil 20kW",
+        "dateTimeTo": "2022-07-06T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Setup",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Production",
+                "position": 20,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "0H18N9_3001_5000_fi50",
+                        "usageType": 1,
+                        "quantity": 6,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut",
+                        "usageType": 2,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Tear down",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/124/20",
+        "externalParentId": "Z/2021/124",
+        "name": "QC Cutting - Steam coil 20kW",
+        "dateTimeTo": "2022-07-06T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut",
+                        "usageType": 1,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut QC",
+                        "usageType": 2,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/124/30",
+        "externalParentId": "Z/2021/124",
+        "name": "Bending - Steam coil 20kW",
+        "dateTimeTo": "2022-07-06T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Benders",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut QC",
+                        "usageType": 1,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent",
+                        "usageType": 2,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/124/40",
+        "externalParentId": "Z/2021/124",
+        "name": "QC Bending - Steam coil 20kW",
+        "dateTimeTo": "2022-07-06T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent",
+                        "usageType": 1,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent QC",
+                        "usageType": 2,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/124/50",
+        "externalParentId": "Z/2021/124",
+        "name": "Transport - Steam coil 20kW",
+        "dateTimeTo": "2022-07-06T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent QC",
+                        "usageType": 0,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/124/60",
+        "externalParentId": "Z/2021/124",
+        "name": "Assembly - Steam coil 20kW",
+        "dateTimeTo": "2022-07-06T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Assembling",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent QC",
+                        "usageType": 1,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW",
+                        "usageType": 2,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/126",
+        "name": "Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-08T00:00:00.000Z",
+        "isDateTimeFromStrict": false,
+        "isDateTimeToStrict": false,
+        "externalCustomerId": "MASTA"
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/126/10",
+        "externalParentId": "Z/2021/126",
+        "name": "Cutting - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-08T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Setup",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Production",
+                "position": 20,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "0H18N9_3001_5000_fi50",
+                        "usageType": 1,
+                        "quantity": 7,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut",
+                        "usageType": 2,
+                        "quantity": 14,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Tear down",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/126/20",
+        "externalParentId": "Z/2021/126",
+        "name": "QC Cutting - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-08T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut",
+                        "usageType": 1,
+                        "quantity": 14,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+                        "usageType": 2,
+                        "quantity": 14,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/126/30",
+        "externalParentId": "Z/2021/126",
+        "name": "Bending - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-08T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Benders",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+                        "usageType": 1,
+                        "quantity": 14,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent",
+                        "usageType": 2,
+                        "quantity": 14,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/126/40",
+        "externalParentId": "Z/2021/126",
+        "name": "QC Bending - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-08T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent",
+                        "usageType": 1,
+                        "quantity": 14,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+                        "usageType": 2,
+                        "quantity": 14,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/126/50",
+        "externalParentId": "Z/2021/126",
+        "name": "Transport - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-08T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+                        "usageType": 0,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/126/60",
+        "externalParentId": "Z/2021/126",
+        "name": "Assembly - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-08T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Assembling",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+                        "usageType": 1,
+                        "quantity": 14,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14",
+                        "usageType": 2,
+                        "quantity": 14,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/127",
+        "name": "Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-10T00:00:00.000Z",
+        "isDateTimeFromStrict": false,
+        "isDateTimeToStrict": false,
+        "externalCustomerId": "MASTA"
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/127/10",
+        "externalParentId": "Z/2021/127",
+        "name": "Cutting - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-10T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Setup",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Production",
+                "position": 20,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "0H18N9_3001_5000_fi50",
+                        "usageType": 1,
+                        "quantity": 5,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut",
+                        "usageType": 2,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Tear down",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/127/20",
+        "externalParentId": "Z/2021/127",
+        "name": "QC Cutting - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-10T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut",
+                        "usageType": 1,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+                        "usageType": 2,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/127/30",
+        "externalParentId": "Z/2021/127",
+        "name": "Bending - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-10T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Benders",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+                        "usageType": 1,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent",
+                        "usageType": 2,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/127/40",
+        "externalParentId": "Z/2021/127",
+        "name": "QC Bending - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-10T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent",
+                        "usageType": 1,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+                        "usageType": 2,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/127/50",
+        "externalParentId": "Z/2021/127",
+        "name": "Transport - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-10T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+                        "usageType": 0,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/127/60",
+        "externalParentId": "Z/2021/127",
+        "name": "Assembly - Handlebars Triumph 1050 08 - 14",
+        "dateTimeTo": "2022-07-10T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Assembling",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+                        "usageType": 1,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14",
+                        "usageType": 2,
+                        "quantity": 10,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/130",
+        "name": "Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-11T00:00:00.000Z",
+        "isDateTimeFromStrict": false,
+        "isDateTimeToStrict": false,
+        "externalCustomerId": "MASTA"
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/130/10",
+        "externalParentId": "Z/2021/130",
+        "name": "Cutting - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-11T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Setup",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Production",
+                "position": 20,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "AL7076_1001_10000_fi50",
+                        "usageType": 1,
+                        "quantity": 4,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut",
+                        "usageType": 2,
+                        "quantity": 8,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Tear down",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/130/20",
+        "externalParentId": "Z/2021/130",
+        "name": "QC Cutting - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-11T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut",
+                        "usageType": 1,
+                        "quantity": 8,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut QC",
+                        "usageType": 2,
+                        "quantity": 8,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/130/30",
+        "externalParentId": "Z/2021/130",
+        "name": "Bending - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-11T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Benders",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut QC",
+                        "usageType": 1,
+                        "quantity": 8,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent",
+                        "usageType": 2,
+                        "quantity": 8,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/130/40",
+        "externalParentId": "Z/2021/130",
+        "name": "QC Bending - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-11T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent",
+                        "usageType": 1,
+                        "quantity": 8,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent QC",
+                        "usageType": 2,
+                        "quantity": 8,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/130/50",
+        "externalParentId": "Z/2021/130",
+        "name": "Transport - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-11T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent QC",
+                        "usageType": 0,
+                        "quantity": 8,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/130/60",
+        "externalParentId": "Z/2021/130",
+        "name": "Assembly - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-11T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Assembling",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent QC",
+                        "usageType": 1,
+                        "quantity": 8,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12",
+                        "usageType": 2,
+                        "quantity": 8,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/131",
+        "name": "Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-12T00:00:00.000Z",
+        "isDateTimeFromStrict": false,
+        "isDateTimeToStrict": false,
+        "externalCustomerId": "MASTA"
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/131/10",
+        "externalParentId": "Z/2021/131",
+        "name": "Cutting - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-12T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Setup",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Production",
+                "position": 20,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "AL7076_1001_10000_fi50",
+                        "usageType": 1,
+                        "quantity": 6,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut",
+                        "usageType": 2,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Tear down",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/131/20",
+        "externalParentId": "Z/2021/131",
+        "name": "QC Cutting - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-12T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut",
+                        "usageType": 1,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut QC",
+                        "usageType": 2,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/131/30",
+        "externalParentId": "Z/2021/131",
+        "name": "Bending - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-12T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Benders",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut QC",
+                        "usageType": 1,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent",
+                        "usageType": 2,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/131/40",
+        "externalParentId": "Z/2021/131",
+        "name": "QC Bending - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-12T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent",
+                        "usageType": 1,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent QC",
+                        "usageType": 2,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/131/50",
+        "externalParentId": "Z/2021/131",
+        "name": "Transport - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-12T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent QC",
+                        "usageType": 0,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "task",
+        "action": "create",
+        "externalId": "Z/2021/131/60",
+        "externalParentId": "Z/2021/131",
+        "name": "Assembly - Gmoles Transalp 08 - 12",
+        "dateTimeTo": "2022-07-12T00:00:00.000Z",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Assembling",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent QC",
+                        "usageType": 1,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12",
+                        "usageType": 2,
+                        "quantity": 12,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "externalId": "Steam coil 20kW - precut QC",
+        "name": "Steam coil 20kW - precut QC",
+        "externalResourceId": "Steam coil 20kW - precut QC",
+        "revisionNumber": 1,
+        "templateStatus": 10,
+        "templateValidFrom": "2022-06-09T13:33:09.74338Z",
+        "templateValidTo": "2050-06-09T13:33:09.74338Z"
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Production",
+        "externalParentId": "Steam coil 20kW - precut QC",
+        "positionOnParentTask": 10,
+        "externalResourceId": "Steam coil 20kW - precut QC",
+        "steps": [
+            {
+                "name": "Setup",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Production",
+                "position": 20,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "0H18N9_3001_5000_fi50",
+                        "usageType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Tear down",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Quality Check",
+        "externalParentId": "Steam coil 20kW - precut QC",
+        "positionOnParentTask": 20,
+        "externalResourceId": "Steam coil 20kW - precut QC",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut QC",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "externalId": "Steam coil 20kW - bent QC",
+        "name": "Steam coil 20kW - bent QC",
+        "externalResourceId": "Steam coil 20kW - bent QC",
+        "revisionNumber": 1,
+        "templateStatus": 10,
+        "templateValidFrom": "2022-06-09T13:33:09.74338Z",
+        "templateValidTo": "2050-06-09T13:33:09.74338Z"
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Production",
+        "externalParentId": "Steam coil 20kW - bent QC",
+        "positionOnParentTask": 10,
+        "externalResourceId": "Steam coil 20kW",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Benders",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - precut QC",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Quality Check",
+        "externalParentId": "Steam coil 20kW - bent QC",
+        "positionOnParentTask": 20,
+        "externalResourceId": "Steam coil 20kW",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent QC",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "externalId": "Steam coil 20kW",
+        "name": "Steam coil 20kW",
+        "externalResourceId": "Steam coil 20kW",
+        "revisionNumber": 1,
+        "templateStatus": 10,
+        "templateValidFrom": "2022-06-09T13:33:09.74338Z",
+        "templateValidTo": "2050-06-09T13:33:09.74338Z"
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Transport - assembly",
+        "externalParentId": "Steam coil 20kW",
+        "positionOnParentTask": 10,
+        "externalResourceId": "Steam coil 20kW",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent QC",
+                        "usageType": 0,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Assembly",
+        "externalParentId": "Steam coil 20kW",
+        "positionOnParentTask": 20,
+        "externalResourceId": "Steam coil 20kW",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:30:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Assembling",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW - bent QC",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Transport - delivery zone",
+        "externalParentId": "Steam coil 20kW",
+        "positionOnParentTask": 30,
+        "externalResourceId": "Steam coil 20kW",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Steam coil 20kW",
+                        "usageType": 0,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "externalId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+        "name": "Handlebars Triumph 1050 08 - 14 - precut QC",
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+        "revisionNumber": 1,
+        "templateStatus": 10,
+        "templateValidFrom": "2022-06-09T13:33:09.74338Z",
+        "templateValidTo": "2050-06-09T13:33:09.74338Z"
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Production",
+        "externalParentId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+        "positionOnParentTask": 10,
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+        "steps": [
+            {
+                "name": "Setup",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Production",
+                "position": 20,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "0H18N9_1001_3000_fi50",
+                        "usageType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Tear down",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Quality Check",
+        "externalParentId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+        "positionOnParentTask": 20,
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "externalId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+        "name": "Handlebars Triumph 1050 08 - 14 - bent QC",
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+        "revisionNumber": 1,
+        "templateStatus": 10,
+        "templateValidFrom": "2022-06-09T13:33:09.74338Z",
+        "templateValidTo": "2050-06-09T13:33:09.74338Z"
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Production",
+        "externalParentId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+        "positionOnParentTask": 10,
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Benders",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - precut QC",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Quality Check",
+        "externalParentId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+        "positionOnParentTask": 20,
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "externalId": "Handlebars Triumph 1050 08 - 14",
+        "name": "Handlebars Triumph 1050 08 - 14",
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14",
+        "revisionNumber": 1,
+        "templateStatus": 10,
+        "templateValidFrom": "2022-06-09T13:33:09.74338Z",
+        "templateValidTo": "2050-06-09T13:33:09.74338Z"
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Transport - assembly",
+        "externalParentId": "Handlebars Triumph 1050 08 - 14",
+        "positionOnParentTask": 10,
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+                        "usageType": 0,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Assembly",
+        "externalParentId": "Handlebars Triumph 1050 08 - 14",
+        "positionOnParentTask": 20,
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:18:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Assembling",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14 - bent QC",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Transport - delivery zone",
+        "externalParentId": "Handlebars Triumph 1050 08 - 14",
+        "positionOnParentTask": 30,
+        "externalResourceId": "Handlebars Triumph 1050 08 - 14",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Handlebars Triumph 1050 08 - 14",
+                        "usageType": 0,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "externalId": "Gmoles Transalp 08 - 12 - precut QC",
+        "name": "Gmoles Transalp 08 - 12 - precut QC",
+        "externalResourceId": "Gmoles Transalp 08 - 12 - precut QC",
+        "revisionNumber": 1,
+        "templateStatus": 10,
+        "templateValidFrom": "2022-06-09T13:33:09.74338Z",
+        "templateValidTo": "2050-06-09T13:33:09.74338Z"
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Production",
+        "externalParentId": "Gmoles Transalp 08 - 12 - precut QC",
+        "positionOnParentTask": 10,
+        "externalResourceId": "Gmoles Transalp 08 - 12 - precut QC",
+        "steps": [
+            {
+                "name": "Setup",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Production",
+                "position": 20,
+                "processingTime": "00:17:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "AL7076_1001_10000_fi50",
+                        "usageType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            },
+            {
+                "name": "Tear down",
+                "position": 10,
+                "processingTime": "00:15:00.000",
+                "quantityPerTime": 0,
+                "resources": [
+                    {
+                        "externalResourceId": "Saws",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Quality Check",
+        "externalParentId": "Gmoles Transalp 08 - 12 - precut QC",
+        "positionOnParentTask": 20,
+        "externalResourceId": "Gmoles Transalp 08 - 12 - precut QC",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut QC",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "externalId": "Gmoles Transalp 08 - 12 - bent QC",
+        "name": "Gmoles Transalp 08 - 12 - bent QC",
+        "externalResourceId": "Gmoles Transalp 08 - 12 - bent QC",
+        "revisionNumber": 1,
+        "templateStatus": 10,
+        "templateValidFrom": "2022-06-09T13:33:09.74338Z",
+        "templateValidTo": "2050-06-09T13:33:09.74338Z"
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Production",
+        "externalParentId": "Gmoles Transalp 08 - 12 - bent QC",
+        "positionOnParentTask": 10,
+        "externalResourceId": "Gmoles Transalp 08 - 12",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:11:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Benders",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - precut QC",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Quality Check",
+        "externalParentId": "Gmoles Transalp 08 - 12 - bent QC",
+        "positionOnParentTask": 20,
+        "externalResourceId": "Gmoles Transalp 08 - 12",
+        "steps": [
+            {
+                "name": "QC",
+                "position": 10,
+                "processingTime": "00:10:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "QC Workplaces",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent QC",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "externalId": "Gmoles Transalp 08 - 12",
+        "name": "Gmoles Transalp 08 - 12",
+        "externalResourceId": "Gmoles Transalp 08 - 12",
+        "revisionNumber": 1,
+        "templateStatus": 10,
+        "templateValidFrom": "2022-06-09T13:33:09.74338Z",
+        "templateValidTo": "2050-06-09T13:33:09.74338Z"
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Transport - assembly",
+        "externalParentId": "Gmoles Transalp 08 - 12",
+        "positionOnParentTask": 10,
+        "externalResourceId": "Gmoles Transalp 08 - 12",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent QC",
+                        "usageType": 0,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Assembly",
+        "externalParentId": "Gmoles Transalp 08 - 12",
+        "positionOnParentTask": 20,
+        "externalResourceId": "Gmoles Transalp 08 - 12",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:13:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Assembling",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Operators",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12 - bent QC",
+                        "usageType": 1,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12",
+                        "usageType": 2,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "taskTemplate",
+        "action": "create",
+        "name": "Transport - delivery zone",
+        "externalParentId": "Gmoles Transalp 08 - 12",
+        "positionOnParentTask": 30,
+        "externalResourceId": "Gmoles Transalp 08 - 12",
+        "steps": [
+            {
+                "name": "Production",
+                "position": 10,
+                "processingTime": "00:05:00.000",
+                "quantityPerTime": 1,
+                "resources": [
+                    {
+                        "externalResourceId": "Transport",
+                        "usageType": 0,
+                        "assignmentType": 0,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Robots",
+                        "usageType": 0,
+                        "assignmentType": 1,
+                        "quantity": 1,
+                        "quantityUnit": 0
+                    },
+                    {
+                        "externalResourceId": "Gmoles Transalp 08 - 12",
+                        "usageType": 0,
+                        "quantity": 2,
+                        "quantityUnit": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "elementType": "order",
+        "action": "create",
+        "description": "Steam coils",
+        "externalId": "Z/2022/123",
+        "orderType": 1,
+        "externalOrganizationId": "BIT",
+        "orderLines": [
+            {
+                "position": 10,
+                "externalItemId": "Steam coil 20kW",
+                "description": "Steam coil 20kW",
+                "itemRevision": "1",
+                "quantity": {
+                    "value": 10,
+                    "unit": 0
+                },
+                "deliveryDate": "2022-07-13T00:00:00.000Z",
+                "orderLineStatus": 0
+            }
+        ]
+    },
+    {
+        "elementType": "order",
+        "action": "create",
+        "description": "Moto",
+        "externalId": "Z/2022/124",
+        "orderType": 1,
+        "externalOrganizationId": "POLIMAT",
+        "orderLines": [
+            {
+                "position": 10,
+                "externalItemId": "Gmoles Transalp 08 - 12",
+                "description": "Gmoles Transalp 08 - 12",
+                "itemRevision": "1",
+                "quantity": {
+                    "value": 6,
+                    "unit": 0
+                },
+                "deliveryDate": "2022-07-13T00:00:00.000Z",
+                "orderLineStatus": 0
+            },
+            {
+                "position": 20,
+                "externalItemId": "Handlebars Triumph 1050 08 - 14",
+                "description": "Handlebars Triumph 1050 08 - 14",
+                "itemRevision": "1",
+                "quantity": {
+                    "value": 14,
+                    "unit": 0
+                },
+                "deliveryDate": "2022-08-20T00:00:00.000Z",
+                "orderLineStatus": 0
+            }
+        ]
+    },
+    {
+        "elementType": "order",
+        "action": "create",
+        "description": "Coils",
+        "externalId": "Z/2022/125",
+        "orderType": 1,
+        "externalOrganizationId": "CMBIT",
+        "orderLines": [
+            {
+                "position": 10,
+                "externalItemId": "Steam coil 20kW",
+                "description": "Steam coil 20kW",
+                "itemRevision": "1",
+                "quantity": {
+                    "value": 4,
+                    "unit": 0
+                },
+                "deliveryDate": "2022-07-28T00:00:00.000Z",
+                "orderLineStatus": 0
+            }
+        ]
+    }
+]
